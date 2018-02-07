@@ -2,11 +2,19 @@ package ATS.atquiz.service.Question;
 
 import java.util.List;
 
-import com.atsistema.formacion.Question.dto.QuestionDTO;
+import org.bson.types.ObjectId;
+
+import ATS.atquiz.dto.QuestionDto;
+import ATS.atquiz.model.Question;
 
 
 public interface QuestionService {
 	
+	
+	public Question map(QuestionDto dto);
+	
+	public QuestionDto map(Question a);
+
 	/**
 	 * Realiza la busqueda de todas las Questionas existentes (con paginacion)
 	 * 
@@ -14,7 +22,7 @@ public interface QuestionService {
 	 * @param size
 	 * @return
 	 */
-	public List<QuestionDTO> findAll(Integer page, Integer size);
+	public List<QuestionDto> findAll(Integer page, Integer size);
 	
 	/**
 	 * Busca por Id
@@ -22,23 +30,7 @@ public interface QuestionService {
 	 * @param idQuestion
 	 * @return
 	 */
-	public QuestionDTO findById(ObjectId idQuestion);
-	
-	/**
-	 * Busca por Nombre
-	 * 
-	 * @param nameRoom
-	 * @return
-	 */
-	public List<QuestionDTO> findByName(String nameRoom);
-	
-	/**
-	 * Recupera todas las Salas de una Questiona 
-	 * 
-	 * @param idQuestion
-	 * @return
-	 */
-	public List<RoomDTO> findRoomsByIdQuestion(ObjectId idQuestion);
+	public QuestionDto findById(ObjectId idQuestion)throws Exception;
 	
 	/**
 	 * Crea una Questiona
@@ -46,14 +38,14 @@ public interface QuestionService {
 	 * @param c
 	 * @return
 	 */
-	public QuestionDTO create(QuestionDTO c);
+	public QuestionDto create(QuestionDto a);
 	
 	/**
 	 * Modifica una Questiona
 	 * 
 	 * @param c
 	 */
-	public void update(QuestionDTO c);
+	public void update(QuestionDto a);
 
 	/**
 	 * Borra una Questiona
