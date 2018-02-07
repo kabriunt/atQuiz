@@ -19,7 +19,7 @@ public interface UserService {
 	
 	UserDto create(UserDto userDto);
 	
-	UserDto update(UserDto userDto);
+	void update(UserDto userDto);
 	
 	void delte(ObjectId oId);
 }

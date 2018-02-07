@@ -1,5 +1,6 @@
 package ATS.atquiz.service.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -22,44 +23,41 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public User map(UserDto userDto) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.map(userDto, User.class);
 	}
 	
 	@Override
 	public UserDto map(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.map(user, UserDto.class);
 	}
 
 	@Override
 	public List<UserDto> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		Iterable<User> users = userDao.findAll();
+		final List<UserDto> userDtos = new ArrayList<>();
+		users.forEach(x->userDtos.add(map(x)));
+		return userDtos;
 	}
 
 	@Override
 	public UserDto findById(ObjectId oId) {
-		// TODO Auto-generated method stub
-		return null;
+		final User user = userDao.findOne(oId);
+		return map(user);
 	}
 
 	@Override
 	public UserDto create(UserDto userDto) {
-		// TODO Auto-generated method stub
-		return null;
+		return map(userDao.save(map(userDto)));
 	}
 
 	@Override
-	public UserDto update(UserDto userDto) {
-		// TODO Auto-generated method stub
-		return null;
+	public void update(UserDto userDto) {
+		userDao.save(map(userDto));
 	}
 
 	@Override
 	public void delte(ObjectId oId) {
-		// TODO Auto-generated method stub
-		
+		userDao.delete(oId);		
 	}
 
 }
