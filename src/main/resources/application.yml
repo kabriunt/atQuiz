@@ -10,7 +10,7 @@ spring:
 # MONGODB (MongoProperties)
   data:
     mongodb:
-      uri: mongodb://localhost/quiz
+      uri: mongodb://localhost/quizdb
 # HTTP Server
 server:
   port: 8081
