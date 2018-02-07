@@ -36,13 +36,13 @@ public class AnswerController {
 		return answerService.create(a);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT, value = "/{idAnswer}")
-	public void update(@PathVariable ObjectId idAnswer, @RequestBody AnswerDto a) {
+	@RequestMapping(method = RequestMethod.PUT)
+	public void update(@RequestBody AnswerDto a) {
 		answerService.update(a);
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{idAnswer}")
-	public void delete(@PathVariable ObjectId idAnswer, @RequestBody AnswerDto a) {
+	public void delete(@PathVariable ObjectId idAnswer) {
 		answerService.delete(idAnswer);
 	}
 	
