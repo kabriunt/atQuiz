@@ -21,27 +21,27 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public List<UserDto> getAll(){
 		return userService.findAll();
 	}
 	
-	@RequestMapping(value = "/{oId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/{oId}", method = RequestMethod.GET)
 	public UserDto getById(@PathVariable(value = "oId") ObjectId oId) {
 		return userService.findById(oId);
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/", method = RequestMethod.POST)
 	public UserDto create(@RequestBody UserDto userDto) {
 		return userService.create(userDto);
 	}
 	
-	@RequestMapping(value = "/", method = RequestMethod.PUT)
+	@RequestMapping(value = "/admin/", method = RequestMethod.PUT)
 	public void update(@RequestBody UserDto userDto) {
 		userService.update(userDto);
 	}
 	
-	@RequestMapping(value = "/{oId}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/admin/{oId}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable(value = "oId") ObjectId oId) {
 		userService.delte(oId);
 	}
