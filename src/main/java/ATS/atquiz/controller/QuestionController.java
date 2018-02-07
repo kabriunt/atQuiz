@@ -28,7 +28,7 @@ private QuestionService questionService;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public QuestionDto findById(@PathVariable ObjectId id) throws Exception {
+	public QuestionDto findById(@PathVariable String id) throws Exception {
 		return questionService.findById(id);
 	}
 	
@@ -43,7 +43,7 @@ private QuestionService questionService;
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable(value = "id") ObjectId id) {
+	public void delete(@PathVariable(value = "id") String id) {
 		questionService.delete(id);
 	}
 	

@@ -41,7 +41,7 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 	
 	@Override
-	public QuestionDto findById(ObjectId idQuestion)throws Exception{
+	public QuestionDto findById(String idQuestion)throws Exception{
 		Question question = questionDao.findOne(idQuestion);
 		return map(Optional.ofNullable(question).orElseThrow(Exception::new));
 	}
@@ -59,7 +59,7 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 	
 	@Override
-	public void delete(ObjectId idQuestion) {
+	public void delete(String idQuestion) {
 		questionDao.delete(idQuestion);
 	}
 
