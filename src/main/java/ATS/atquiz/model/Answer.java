@@ -19,7 +19,7 @@ public class Answer implements Serializable{
 	@Id
 	private ObjectId id;
 	
-	private String texto;
+	private String answer;
 	
 	private boolean ok;
 	
