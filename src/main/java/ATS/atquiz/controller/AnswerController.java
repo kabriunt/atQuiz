@@ -2,7 +2,6 @@ package ATS.atquiz.controller;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +26,7 @@ public class AnswerController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{idAnswer}")
-	public AnswerDto findById(@PathVariable ObjectId idAnswer) throws Exception {
+	public AnswerDto findById(@PathVariable String idAnswer) throws Exception {
 		return answerService.findById(idAnswer);
 	}
 	
@@ -42,7 +41,7 @@ public class AnswerController {
 	}
 	
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{idAnswer}")
-	public void delete(@PathVariable ObjectId idAnswer) {
+	public void delete(@PathVariable String idAnswer) {
 		answerService.delete(idAnswer);
 	}
 	

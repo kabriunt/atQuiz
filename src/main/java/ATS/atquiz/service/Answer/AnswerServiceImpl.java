@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.bson.types.ObjectId;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -30,7 +29,7 @@ public class AnswerServiceImpl implements AnswerService{
 	}
 	
 	@Override
-	public AnswerDto findById(ObjectId idAnswer) throws Exception{
+	public AnswerDto findById(String idAnswer) throws Exception{
 		Answer answer = answerDao.findOne(idAnswer);
 		return map(Optional.ofNullable(answer).orElseThrow(Exception::new));
 	}
@@ -48,7 +47,7 @@ public class AnswerServiceImpl implements AnswerService{
 	}
 	
 	@Override
-	public void delete(ObjectId idAnswer) {
+	public void delete(String idAnswer) {
 		answerDao.delete(idAnswer);
 	}
 	
