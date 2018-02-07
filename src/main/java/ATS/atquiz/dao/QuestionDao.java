@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import ATS.atquiz.model.Question;
 
 @Repository
-public interface QuestionDao extends MongoRepository<Question, ObjectId>
+public interface QuestionDao extends MongoRepository<Question, String>
 {
 
 	

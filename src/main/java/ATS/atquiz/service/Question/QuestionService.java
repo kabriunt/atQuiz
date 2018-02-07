@@ -30,7 +30,7 @@ public interface QuestionService {
 	 * @param idQuestion
 	 * @return
 	 */
-	public QuestionDto findById(ObjectId idQuestion)throws Exception;
+	public QuestionDto findById(String idQuestion)throws Exception;
 	
 	/**
 	 * Crea una Questiona
@@ -52,6 +52,6 @@ public interface QuestionService {
 	 * 
 	 * @param c
 	 */
-	public void delete(ObjectId idQuestion);
+	public void delete(String idQuestion);
 	
 }
