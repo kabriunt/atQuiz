@@ -20,28 +20,28 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public List<UserDto> getAll(){
 		return userService.findAll();
 	}
 	
-	@RequestMapping(value = "/admin/{oId}", method = RequestMethod.GET)
-	public UserDto getById(@PathVariable(value = "oId") String oId) {
-		return userService.findById(oId);
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public UserDto getById(@PathVariable(value = "id") String id) {
+		return userService.findById(id);
 	}
 	
-	@RequestMapping(value = "/admin/", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public UserDto create(@RequestBody UserDto userDto) {
 		return userService.create(userDto);
 	}
 	
-	@RequestMapping(value = "/admin/", method = RequestMethod.PUT)
+	@RequestMapping(method = RequestMethod.PUT)
 	public void update(@RequestBody UserDto userDto) {
 		userService.update(userDto);
 	}
 	
-	@RequestMapping(value = "/admin/{oId}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable(value = "oId") String oId) {
-		userService.delte(oId);
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable(value = "id") String id) {
+		userService.delte(id);
 	}
 }
