@@ -1,4 +1,4 @@
-package ATS.atquiz;
+/*package ATS.atquiz;
 
 import javax.sql.DataSource;
 
@@ -34,4 +34,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.exceptionHandling().accessDeniedPage("/403");
 	}
 
-}
+}*/

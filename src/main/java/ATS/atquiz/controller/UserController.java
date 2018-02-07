@@ -27,7 +27,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/admin/{oId}", method = RequestMethod.GET)
-	public UserDto getById(@PathVariable(value = "oId") ObjectId oId) {
+	public UserDto getById(@PathVariable(value = "oId") String oId) {
 		return userService.findById(oId);
 	}
 	
@@ -42,7 +42,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/admin/{oId}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable(value = "oId") ObjectId oId) {
+	public void delete(@PathVariable(value = "oId") String oId) {
 		userService.delte(oId);
 	}
 }

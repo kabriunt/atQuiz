@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public UserDto findById(ObjectId oId) {
+	public UserDto findById(String oId) {
 		final User user = userDao.findOne(oId);
 		return map(user);
 	}
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void delte(ObjectId oId) {
+	public void delte(String oId) {
 		userDao.delete(oId);		
 	}
 

@@ -15,11 +15,11 @@ public interface UserService {
 	
 	List<UserDto> findAll();
 	
-	UserDto findById(ObjectId oId);
+	UserDto findById(String oId);
 	
 	UserDto create(UserDto userDto);
 	
 	void update(UserDto userDto);
 	
-	void delte(ObjectId oId);
+	void delte(String oId);
 }

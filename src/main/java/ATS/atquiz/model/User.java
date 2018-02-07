@@ -18,10 +18,16 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1827185422867016710L;
 
 	@Id
-	private ObjectId id;
+	private String id;
 	
 	@Indexed(unique = true)
 	private String username;
 	
 	private String password;
+	
+	private String role;
+	
+	private boolean enabled;
+	
+	
 }

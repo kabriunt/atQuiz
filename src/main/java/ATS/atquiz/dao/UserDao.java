@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import ATS.atquiz.model.User;
 
 @Repository
-public interface UserDao extends MongoRepository<User, ObjectId> {
+public interface UserDao extends MongoRepository<User, String> {
 
 }
