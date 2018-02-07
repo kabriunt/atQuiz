@@ -16,7 +16,7 @@ import ATS.atquiz.service.Question.QuestionService;
 
 
 @RestController
-@RequestMapping(value="/api/Question")
+@RequestMapping(value="/api/question")
 public class QuestionController {
 
 	@Autowired
