@@ -11,9 +11,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Getter;
 import lombok.Setter;
 
-@Document
+
 @Getter
 @Setter
+@Document
 public class Question implements Serializable{
 	
 	private static final long serialVersionUID = -2641110345493075094L;
@@ -24,7 +25,7 @@ public class Question implements Serializable{
 	
 	private String tags;
 	
-	private List<Answer>  answers = new ArrayList<>();
+	private List<Answer> answers = new ArrayList<>();
 	
 	
 
