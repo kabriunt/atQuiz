@@ -2,8 +2,6 @@ package ATS.atquiz.dto;
 
 import java.io.Serializable;
 
-import org.bson.types.ObjectId;
-
 import lombok.Getter;
 import lombok.Setter;
 
