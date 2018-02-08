@@ -26,37 +26,31 @@ public class MongoUserDetails implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
 		return userDto.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
 		return userDto.getUsername();
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
+		return userDto.isNonExpiredAccount();
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
+		return userDto.isNonLocked();
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
+		return userDto.isNonExpiredCredentials();
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
 		return userDto.isEnabled();
 	}
 }

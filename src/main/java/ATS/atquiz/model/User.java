@@ -26,6 +26,12 @@ public class User implements Serializable{
 	
 	private String role;
 	
+	private boolean nonExpiredAccount;
+	
+	private boolean nonLocked;
+	
+	private boolean nonExpiredCredentials;
+	
 	private boolean enabled;
 	
 	

@@ -33,11 +33,12 @@ public class MyUserDetailsService implements UserDetailsService {
             String dUsername = document.getString("username");
             String dPassword = document.getString("password");
             String dRole= document.getString("role");
+            boolean dNonExpiredAccount= document.getBoolean("nonExpiredAccount");
+            boolean dNonExpiredCredentials = document.getBoolean("nonExpiredCredentials");
+            boolean dNonLocked = document.getBoolean("nonLocked");
             boolean dEnabled = document.getBoolean("enabled");
-            log.info("Username: "+dUsername);
-            log.info("Password: "+dPassword);
-            log.info("Rol: "+dRole);
-            MongoUserDetails mongoUserDetails = new  MongoUserDetails(new UserDto(dId, dUsername, dPassword, dRole, dEnabled));
+            MongoUserDetails mongoUserDetails = new  MongoUserDetails(new UserDto(dId, dUsername, dPassword, dRole,
+            		dNonExpiredAccount, dNonLocked, dNonExpiredCredentials, dEnabled));
  
             return mongoUserDetails;
         } else {

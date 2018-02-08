@@ -14,13 +14,13 @@ import ATS.atquiz.dto.UserDto;
 import ATS.atquiz.service.User.UserService;
 
 @RestController
-@RequestMapping(value="/api/user")
+@RequestMapping(value="/api/admin/user")
 public class UserController {
 	
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(value = "/admin/", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public List<UserDto> getAll(){
 		return userService.findAll();
 	}
