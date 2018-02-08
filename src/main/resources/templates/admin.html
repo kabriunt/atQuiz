@@ -6,7 +6,7 @@
  <body>
      <h1 style="color:blue"> Hola! Esta es la página del Administrador!</h1>
      <br/>
- 
+	<a style="color:blue" th:href="@{/admin/details}">Usuarios</a>
      <table>
     	<tr th:each="u: ${users}">
     	    <td th:text="${u.id}" />

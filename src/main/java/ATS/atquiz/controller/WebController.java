@@ -18,9 +18,14 @@ public class WebController {
             return "home";
         }
   
-    @RequestMapping(value="/admin")
+    @RequestMapping(value="/admin/details")
     public String admin(Model modelo){
     	modelo.addAttribute("users", userService.findAll());
+        return "admin";
+    }
+    
+    @RequestMapping(value="/admin")
+    public String admin(){
         return "admin";
     }
     
