@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 		.antMatchers("/", "/home").permitAll()
 		.antMatchers("/admin").hasRole("ADMIN")
-		.antMatchers("/candidate").hasRole("CANDIDATE")
+		.antMatchers("/candidate").hasAnyRole("CANDIDATE","ADMIN")
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
 				.permitAll();
 		http.exceptionHandling().accessDeniedPage("/403");

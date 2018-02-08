@@ -5,8 +5,19 @@
  </head>
  <body>
      <h1 style="color:blue"> Hola! Esta es la página del Administrador!</h1>
-     
-     <a style="color:blue" th:href="@{/}">Ir al home</a>
+     <br/>
+ 
+     <table>
+    	<tr th:each="u: ${users}">
+    	    <td th:text="${u.id}" />
+        	<td th:text="${u.username}" />
+        	<td th:text="${u.password}" />
+    	</tr>
+	</table>
+ 	
+ 	<br/>
+ 	
+ 	<a style="color:blue" th:href="@{/}">Ir al home</a>
      
      <br/>
      
