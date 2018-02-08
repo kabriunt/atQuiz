@@ -21,7 +21,6 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@ModelAttribute("users")
 	@RequestMapping(method = RequestMethod.GET)
 	public List<UserDto> getAll(){
 		return userService.findAll();

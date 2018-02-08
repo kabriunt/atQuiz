@@ -7,7 +7,7 @@
  <body>
      <h1 style="color:blue"> Hola! Esta es la página del Administrador!</h1>
      <br/>
-	<button type="button" class="btn btn-primary"><a style="color:blue" th:href="@{/admin/details}">Usuarios</a></button>
+	<button type="button" class="btn btn-primary"><a style="color:blue" th:href="@{/admin/user}">Usuarios</a></button>
 	<table class="table table-hover">
 	<caption></caption>
     	<thead>
@@ -15,6 +15,11 @@
       			<th>ID</th>
       			<th>USERNAME</th>
       			<th>PASSWORD</th>
+      			<th>ROL</th>
+      			<th>EXPIRED</th>
+      			<th>LOCKED</th>
+      			<th>CREDENCIAL</th>
+      			<th>ENABLED</th>
       		</tr>
     	</thead>
     	<tbody>
@@ -22,6 +27,11 @@
     	    	<td th:text="${u.id}" />
         		<td th:text="${u.username}" />
         		<td th:text="${u.password}" />
+        		<td th:text="${u.role}" />
+        		<td th:text="${u.nonExpiredAccount}" />
+        		<td th:text="${u.nonLocked}" />
+        		<td th:text="${u.nonExpiredCredentials}" />
+        		<td th:text="${u.enabled}" />
     		</tr>
     	</tbody>
 	</table>
