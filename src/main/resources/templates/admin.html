@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
  <head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
  <title>Welcome Security with Spring Boot!</title>
  </head>
  <body>
      <h1 style="color:blue"> Hola! Esta es la página del Administrador!</h1>
      <br/>
-	<a style="color:blue" th:href="@{/admin/details}">Usuarios</a>
-     <table>
-    	<tr th:each="u: ${users}">
-    	    <td th:text="${u.id}" />
-        	<td th:text="${u.username}" />
-        	<td th:text="${u.password}" />
-    	</tr>
+	<button type="button" class="btn btn-primary"><a style="color:blue" th:href="@{/admin/details}">Usuarios</a></button>
+	<table class="table table-hover">
+	<caption></caption>
+    	<thead>
+      		<tr>
+      			<th>ID</th>
+      			<th>USERNAME</th>
+      			<th>PASSWORD</th>
+      		</tr>
+    	</thead>
+    	<tbody>
+      		<tr th:each="u: ${users}">
+    	    	<td th:text="${u.id}" />
+        		<td th:text="${u.username}" />
+        		<td th:text="${u.password}" />
+    		</tr>
+    	</tbody>
 	</table>
  	
  	<br/>
