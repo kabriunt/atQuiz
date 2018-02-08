@@ -1,26 +1,31 @@
-/*package ATS.atquiz;
-
-import javax.sql.DataSource;
+package ATS.atquiz;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
+import ATS.atquiz.service.User.MyUserDetailsService;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Configuration
 @EnableAutoConfiguration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-	@Autowired
-	DataSource dataSource;
-
+	
+	@Bean
+    public UserDetailsService mongoUserDetails() {
+        return new MyUserDetailsService();
+    }
+	
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource)
-				.usersByUsernameQuery("")
-				.authoritiesByUsernameQuery("");
+		UserDetailsService userDetailsService = mongoUserDetails();
+		auth.userDetailsService(userDetailsService);
 	}
 
 	@Override
@@ -34,4 +39,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.exceptionHandling().accessDeniedPage("/403");
 	}
 
-}*/
+}

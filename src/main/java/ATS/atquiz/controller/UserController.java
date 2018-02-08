@@ -20,7 +20,7 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/", method = RequestMethod.GET)
 	public List<UserDto> getAll(){
 		return userService.findAll();
 	}
