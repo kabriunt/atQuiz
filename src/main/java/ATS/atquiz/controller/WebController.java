@@ -18,7 +18,7 @@ public class WebController {
     
     @RequestMapping(value={"/candidate"})
     public String student(){
-        return "student";
+        return "candidate";
     }
    
     @RequestMapping(value={"/login"})
