@@ -10,27 +10,21 @@ public class WebController {
         public String home(){
             return "home";
         }
-   
-    @RequestMapping(value={"/teacher"})
-    public String teacher(){
-        return "teacher";
-    }
-    
-    @RequestMapping(value={"/student"})
-    public String student(){
-        return "student";
-    }
   
     @RequestMapping(value="/admin")
     public String admin(){
         return "admin";
+    }
+    
+    @RequestMapping(value={"/candidate"})
+    public String student(){
+        return "student";
     }
    
     @RequestMapping(value={"/login"})
     public String login(){
         return "login";
     }
-   
    
     @RequestMapping(value="/403")
     public String Error403(){
