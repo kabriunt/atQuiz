@@ -19,6 +19,14 @@ public class UserDto implements Serializable{
 	
 	private String role;
 	
+	private String name;
+	
+	private String surname;
+	
+	private String email;
+	
+	private String DNI;
+	
 	private boolean nonExpiredAccount;
 	
 	private boolean nonLocked;
@@ -29,12 +37,16 @@ public class UserDto implements Serializable{
 	
 	public UserDto(){}
 	
-	public UserDto(String id, String username, String password, String role,
-			boolean nonExpiredAccount, boolean nonLocked, boolean nonExpiredCredentials, boolean enabled) {
+	public UserDto(String id, String username, String password, String role, String name,  String surname,  String email,
+	 String DNI, boolean nonExpiredAccount, boolean nonLocked, boolean nonExpiredCredentials, boolean enabled) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.role = role;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.DNI = DNI;
 		this.nonExpiredAccount = nonExpiredAccount;
 		this.nonLocked = nonLocked;
 		this.nonExpiredCredentials = nonExpiredCredentials;
