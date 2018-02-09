@@ -23,6 +23,8 @@ public interface QuestionService {
 	 */
 	public List<QuestionDto> findAll(Integer page, Integer size);
 	
+	public List<QuestionDto> findByTagAndLevel(String tag, Integer level);
+	
 	/**
 	 * Busca por Id
 	 * 

@@ -76,4 +76,10 @@ public class QuestionServiceImpl implements QuestionService{
 		q.setAnswers(answers);
 		questionDao.save(q);
 	}
+
+	@Override
+	public List<QuestionDto> findByTagAndLevel(String tag, Integer level) {
+		List<Question> questions = questionDao.findByTagAndLevel(tag,level);
+		return questions.stream().map(u->map(u)).collect(Collectors.toList());
+	}
 }

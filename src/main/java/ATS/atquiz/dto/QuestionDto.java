@@ -13,11 +13,11 @@ public class QuestionDto {
 	
 	private String tag;
 	
-	private String level;
+	private Integer level;
 	
 	public QuestionDto() {}
 	
-	public QuestionDto(String id, String question, String tag, String level) {
+	public QuestionDto(String id, String question, String tag, Integer level) {
 		this.id = id;
 		this.question = question;
 		this.tag = tag;

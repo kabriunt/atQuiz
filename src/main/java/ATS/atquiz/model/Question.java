@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import ATS.atquiz.dto.AnswerDto;
@@ -25,7 +24,7 @@ public class Question implements Serializable{
 	
 	private String tag;
 	
-	private String level;
+	private Integer level;
 	
 	private List<AnswerDto> answers = new ArrayList<>();
 	

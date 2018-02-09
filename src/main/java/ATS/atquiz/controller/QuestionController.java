@@ -16,7 +16,7 @@ import ATS.atquiz.service.Question.QuestionService;
 
 
 @RestController
-@RequestMapping(value="/api/admin/Question")
+@RequestMapping(value="/api/admin/question")
 public class QuestionController {
 
 	@Autowired
@@ -25,6 +25,11 @@ private QuestionService questionService;
 	@RequestMapping(method = RequestMethod.GET)
 	public List<QuestionDto> findAll(@RequestParam(required=false, defaultValue="0") Integer page, @RequestParam(required=false, defaultValue="5") Integer size){
 		return questionService.findAll(page,size);		
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/quiz")
+	public List<QuestionDto> findByTagAndLevel(@RequestParam(required=false) String tag, @RequestParam(required=false) Integer level){
+		return questionService.findByTagAndLevel(tag,level);		
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
