@@ -32,9 +32,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers("/", "/home").permitAll()
-		.antMatchers("/api/**").hasRole("ADMIN")
+		.antMatchers("/api/question/admin**").hasRole("ADMIN")
+		.antMatchers("/api/quiz/admin**").hasRole("ADMIN")
+		.antMatchers("/api/user/admin**").hasRole("ADMIN")
 		.antMatchers("/admin").hasRole("ADMIN")
 		.antMatchers("/candidate").hasAnyRole("CANDIDATE","ADMIN")
+		.antMatchers("/api/quiz/candidate").hasAnyRole("CANDIDATE","ADMIN")
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
 				.permitAll();
 		http.exceptionHandling().accessDeniedPage("/403");

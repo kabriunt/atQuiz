@@ -14,7 +14,7 @@ import ATS.atquiz.dto.UserDto;
 import ATS.atquiz.service.User.UserService;
 
 @RestController
-@RequestMapping(value="/api/user/")
+@RequestMapping(value="/api/user/admin")
 public class UserController {
 	
 	@Autowired

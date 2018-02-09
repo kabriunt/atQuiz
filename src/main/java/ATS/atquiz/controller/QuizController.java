@@ -19,12 +19,12 @@ public class QuizController {
 	@Autowired
 	private QuizService quizService;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/admin",method = RequestMethod.GET)
 	public List<QuizDto> findAll(){
 		return quizService.findAll();
 	}
 	
-	@RequestMapping(value = "/{username}", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/{username}", method = RequestMethod.GET)
 	public List<QuizDto> findByUsername(@PathVariable String username){
 		return quizService.findByUsername(username);
 	}
