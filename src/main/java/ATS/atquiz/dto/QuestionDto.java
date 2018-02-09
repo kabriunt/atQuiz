@@ -1,5 +1,7 @@
 package ATS.atquiz.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,13 +17,16 @@ public class QuestionDto {
 	
 	private Integer level;
 	
+	private List<AnswerDto> answers;
+	
 	public QuestionDto() {}
 	
-	public QuestionDto(String id, String question, String tag, Integer level) {
+	public QuestionDto(String id, String question, String tag, Integer level, List<AnswerDto> answers) {
 		this.id = id;
 		this.question = question;
 		this.tag = tag;
 		this.level = level;
+		this.answers = answers;
 	}
 	
 
