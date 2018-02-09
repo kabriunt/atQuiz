@@ -26,7 +26,7 @@ public class Quiz implements Serializable{
 	
 	Double result;
 	
-	private User username;
+	private User user;
 	
 	private List<QuestionDto> answers = new ArrayList<>();
 
