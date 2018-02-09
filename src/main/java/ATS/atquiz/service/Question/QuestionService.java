@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.bson.types.ObjectId;
 
+import ATS.atquiz.dto.AnswerDto;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.model.Question;
 
@@ -53,5 +54,12 @@ public interface QuestionService {
 	 * @param c
 	 */
 	public void delete(String idQuestion);
+	
+	/**
+	 * 
+	 * @param idQuestion
+	 * @param a
+	 */
+	void addAnswer(String idQuestion, AnswerDto a);
 	
 }

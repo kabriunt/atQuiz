@@ -7,7 +7,7 @@ import java.util.List;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
+import ATS.atquiz.dto.AnswerDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +25,7 @@ public class Question implements Serializable{
 	
 	private String tags;
 	
-	private List<Answer> answers = new ArrayList<>();
+	private List<AnswerDto> answers = new ArrayList<>();
 	
 	
 
