@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserbooleanDto implements Serializable{
+public class UserBooleanDto implements Serializable{
 	
 	
 	private static final long serialVersionUID = 6387997671995409651L;
@@ -26,9 +26,9 @@ public class UserbooleanDto implements Serializable{
 	
 	private boolean enabled;
 	
-	public UserbooleanDto(){}
+	public UserBooleanDto(){}
 	
-	public UserbooleanDto(String id, String username, String password,
+	public UserBooleanDto(String id, String username, String password,
 			boolean nonExpiredAccount, boolean nonLocked, boolean nonExpiredCredentials, boolean enabled) {
 		this.id = id;
 		this.username = username;
