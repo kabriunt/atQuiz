@@ -16,7 +16,7 @@ import ATS.atquiz.service.Question.QuestionService;
 
 
 @RestController
-@RequestMapping(value="/api/Question")
+@RequestMapping(value="/api/admin/Question")
 public class QuestionController {
 
 	@Autowired
@@ -50,6 +50,11 @@ private QuestionService questionService;
 	@RequestMapping(value = "/{id}/newAnswer", method = RequestMethod.POST)
 	public void addAnswer(@PathVariable String id, @RequestBody AnswerDto answerDto) {
 		questionService.addAnswer(id, answerDto);
+	}
+	
+	@RequestMapping(value = "/{id}/updateAnswerList", method = RequestMethod.POST)
+	public void updateAnswerList(@PathVariable String id, @RequestBody List<AnswerDto> answerDtos) {
+		questionService.updateAnswerList(id, answerDtos);
 	}
 	
 }

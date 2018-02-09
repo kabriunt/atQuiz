@@ -54,10 +54,16 @@ public interface QuestionService {
 	public void delete(String idQuestion);
 	
 	/**
-	 * 
+	 * Añade una respuesta a una pregunta
 	 * @param idQuestion
-	 * @param a
+	 * @param answer
 	 */
-	void addAnswer(String idQuestion, AnswerDto a);
+	void addAnswer(String idQuestion, AnswerDto answer);
+	/**
+	 * Actualiza una lista de preguntas
+	 * @param idQuestion
+	 * @param answers
+	 */
+	void updateAnswerList(String idQuestion, List<AnswerDto> answers);
 	
 }

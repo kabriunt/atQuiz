@@ -64,9 +64,16 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 	
 	@Override
-	public void addAnswer(String idQuestion, AnswerDto a) {
+	public void addAnswer(String idQuestion, AnswerDto answer) {
 		final Question q = questionDao.findOne(idQuestion);
-		q.getAnswers().add(a);
+		q.getAnswers().add(answer);
+		questionDao.save(q);
+	}
+	
+	@Override
+	public void updateAnswerList(String idQuestion, List<AnswerDto> answers) {
+		final Question q = questionDao.findOne(idQuestion);
+		q.setAnswers(answers);
 		questionDao.save(q);
 	}
 }
