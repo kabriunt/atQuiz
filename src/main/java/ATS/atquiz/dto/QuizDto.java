@@ -2,6 +2,7 @@ package ATS.atquiz.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -25,14 +26,16 @@ public class QuizDto implements Serializable{
 	
 	private User username;
 	
+	private List<QuestionDto> questions;
+	
 	public QuizDto() {}
 	
-	public QuizDto(String Id, Date dateQuiz, Double result, User username) {
+	public QuizDto(String Id, Date dateQuiz, Double result, User username, List<QuestionDto> questions) {
 		this.Id = Id;
 		this.dateQuiz = dateQuiz;
 		this.result = result;
 		this.username = username;
-		
+		this.questions = questions;
 	}
 	
 }
