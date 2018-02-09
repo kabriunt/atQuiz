@@ -13,7 +13,7 @@ import ATS.atquiz.dto.QuizDto;
 import ATS.atquiz.service.Quiz.QuizService;
 
 @RestController
-@RequestMapping(value="/api/admin/quiz")
+@RequestMapping(value="/api/quiz")
 public class QuizController {
 	
 	@Autowired
@@ -24,15 +24,14 @@ public class QuizController {
 		return quizService.findAll();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/{username}")
+	@RequestMapping(value = "/{username}", method = RequestMethod.GET)
 	public List<QuizDto> findByUsername(@PathVariable String username){
 		return quizService.findByUsername(username);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/candidate", method = RequestMethod.POST)
 	public QuizDto create(@RequestBody QuizDto q) {
 		return quizService.create(q);
-	}
-	
+	}	
 	
 }
