@@ -10,9 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import ATS.atquiz.service.User.MyUserDetailsService;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Configuration
 @EnableAutoConfiguration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {

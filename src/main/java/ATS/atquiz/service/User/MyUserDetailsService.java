@@ -11,10 +11,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import ATS.atquiz.service.User.MongoUserDetails;
-import lombok.extern.slf4j.Slf4j;
 import ATS.atquiz.dto.UserDto;
 
-@Slf4j
 @Service
 public class MyUserDetailsService implements UserDetailsService {
  
