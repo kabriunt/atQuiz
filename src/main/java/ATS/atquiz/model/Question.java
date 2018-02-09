@@ -19,11 +19,13 @@ public class Question implements Serializable{
 	
 	private static final long serialVersionUID = -2641110345493075094L;
 
-	private ObjectId Id;
+	private String Id;
 	
 	private String question;
 	
-	private String tags;
+	private String tag;
+	
+	private String level;
 	
 	private List<AnswerDto> answers = new ArrayList<>();
 	
