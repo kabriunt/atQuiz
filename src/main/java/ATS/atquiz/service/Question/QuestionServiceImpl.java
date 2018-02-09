@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import ATS.atquiz.dao.QuestionDao;
+import ATS.atquiz.dto.AnswerDto;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.model.Question;
 
@@ -62,5 +63,11 @@ public class QuestionServiceImpl implements QuestionService{
 	public void delete(String idQuestion) {
 		questionDao.delete(idQuestion);
 	}
-
+	
+	@Override
+	public void addAnswer(String idQuestion, AnswerDto a) {
+		final Question q = questionDao.findOne(idQuestion);
+		q.getAnswers().add(a);
+		questionDao.save(q);
+	}
 }

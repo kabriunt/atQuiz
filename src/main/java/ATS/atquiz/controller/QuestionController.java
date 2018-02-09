@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import ATS.atquiz.dto.AnswerDto;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.service.Question.QuestionService;
 
@@ -44,6 +45,11 @@ private QuestionService questionService;
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable(value = "id") String id) {
 		questionService.delete(id);
+	}
+	
+	@RequestMapping(value = "/{id}/newAnswer", method = RequestMethod.POST)
+	public void addAnswer(@PathVariable String id, @RequestBody AnswerDto answerDto) {
+		questionService.addAnswer(id, answerDto);
 	}
 	
 }
