@@ -22,7 +22,10 @@ public class Quiz implements Serializable{
 	public String Id;
 	
 	@DateTimeFormat(pattern = "yyyy/MM/dd hh:mm:ss")
-	public Date dateQuiz;
+	public Date dateIni;
+	
+	@DateTimeFormat(pattern = "yyyy/MM/dd hh:mm:ss")
+	public Date dateEnd;
 	
 	Double result;
 	
