@@ -1,4 +1,4 @@
-package ATS.atquiz.service.user.question;
+package ATS.atquiz.service.question;
 
 import java.util.ArrayList;
 import java.util.List;
