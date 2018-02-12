@@ -4,6 +4,8 @@ import java.util.List;
 
 import ATS.atquiz.dto.UserDto;
 import ATS.atquiz.model.User;
+import Exception.InvalidDataException;
+import Exception.NotFoundException;
 
 public interface UserService {
 	
@@ -11,13 +13,13 @@ public interface UserService {
 	
 	UserDto map(User user);
 	
-	List<UserDto> findAll();
+	List<UserDto> findAll() throws NotFoundException;
 	
-	UserDto findById(String oId);
+	UserDto findById(String oId) throws NotFoundException;
 	
-	UserDto create(UserDto userDto);
+	UserDto create(UserDto userDto) throws InvalidDataException;
 	
 	void update(UserDto userDto);
 	
-	void delte(String oId);
+	void delete(String oId);
 }

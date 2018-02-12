@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ATS.atquiz.dto.UserDto;
 
 import ATS.atquiz.service.User.UserService;
+import Exception.InvalidDataException;
+import Exception.NotFoundException;
 
 @RestController
 @RequestMapping(value="/api/user/admin")
@@ -21,17 +23,17 @@ public class UserController {
 	UserService userService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<UserDto> getAll(){
+	public List<UserDto> getAll() throws NotFoundException{
 		return userService.findAll();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public UserDto getById(@PathVariable(value = "id") String id) {
+	public UserDto getById(@PathVariable(value = "id") String id) throws NotFoundException {
 		return userService.findById(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public UserDto create(@RequestBody UserDto userDto) {
+	public UserDto create(@RequestBody UserDto userDto) throws InvalidDataException {
 		return userService.create(userDto);
 	}
 	
@@ -42,6 +44,6 @@ public class UserController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable(value = "id") String id) {
-		userService.delte(id);
+		userService.delete(id);
 	}
 }

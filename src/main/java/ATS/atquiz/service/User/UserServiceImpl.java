@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import ATS.atquiz.dao.UserDao;
 import ATS.atquiz.dto.UserDto;
 import ATS.atquiz.model.User;
+import Exception.InvalidDataException;
+import Exception.NotFoundException;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -31,31 +33,42 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<UserDto> findAll() {
+	public List<UserDto> findAll() throws NotFoundException {
 		Iterable<User> users = userDao.findAll();
-		final List<UserDto> userDtos = new ArrayList<>();
-		users.forEach(x->userDtos.add(map(x)));
-		return userDtos;
+		if(users!=null) {
+			final List<UserDto> userDtos = new ArrayList<>();
+			users.forEach(x->userDtos.add(map(x)));
+			return userDtos;
+		}
+		throw new NotFoundException();
 	}
 
 	@Override
-	public UserDto findById(String oId) {
+	public UserDto findById(String oId) throws NotFoundException{
 		final User user = userDao.findOne(oId);
-		return map(user);
+		if(user != null)
+			return map(user);
+		throw new NotFoundException();
 	}
 
+	private boolean validate(UserDto userDto) {
+		return (userDto.getId()!=null && userDto.getUsername() != null && userDto.getPassword() != null && userDto.getDNI() != null &&
+				userDto.getName() != null && userDto.getEmail() != null);
+	}
 	@Override
-	public UserDto create(UserDto userDto) {
-		return map(userDao.save(map(userDto)));
+	public UserDto create(UserDto userDto) throws InvalidDataException {
+		if(validate(userDto))
+			return map(userDao.save(map(userDto)));
+		throw new InvalidDataException("Error, faltan datos");
 	}
-
+	
 	@Override
 	public void update(UserDto userDto) {
 		userDao.save(map(userDto));
 	}
 
 	@Override
-	public void delte(String oId) {
+	public void delete(String oId) {
 		userDao.delete(oId);		
 	}
 

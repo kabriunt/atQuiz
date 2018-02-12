@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ATS.atquiz.service.User.UserService;
+import Exception.NotFoundException;
 
 @Controller
 public class WebController {
@@ -19,7 +20,7 @@ public class WebController {
         }
   
     @RequestMapping(value="/admin/details")
-    public String admin(Model modelo){
+    public String admin(Model modelo) throws NotFoundException{
     	modelo.addAttribute("users", userService.findAll());
         return "admin";
     }

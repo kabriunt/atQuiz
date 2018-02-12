@@ -26,6 +26,14 @@ public class User implements Serializable{
 	
 	private String role;
 	
+	private String name;
+	
+	private String surname;
+	
+	private String email;
+	
+	private String DNI;
+	
 	private boolean nonExpiredAccount;
 	
 	private boolean nonLocked;
