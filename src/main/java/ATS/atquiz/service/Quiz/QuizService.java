@@ -16,4 +16,6 @@ public interface QuizService {
 	public Quiz map(QuizDto dto);
 	
 	public QuizDto map(Quiz q);
+
+	public QuizDto generatedQuiz(String tag, Integer level);
 }

@@ -20,7 +20,10 @@ public class QuizDto implements Serializable{
 	public String Id;
 	
 	@DateTimeFormat(pattern = "yyyy/MM/dd hh:mm:ss")
-	public Date dateQuiz;
+	public Date dateIni;
+	
+	@DateTimeFormat(pattern = "yyyy/MM/dd hh:mm:ss")
+	public Date dateEnd;
 	
 	Double result;
 	
@@ -30,9 +33,10 @@ public class QuizDto implements Serializable{
 	
 	public QuizDto() {}
 	
-	public QuizDto(String Id, Date dateQuiz, Double result, User username, List<QuestionDto> questions) {
+	public QuizDto(String Id, Date dateIni, Date dateEnd, Double result, User username, List<QuestionDto> questions) {
 		this.Id = Id;
-		this.dateQuiz = dateQuiz;
+		this.dateIni = dateIni;
+		this.dateEnd = dateEnd;
 		this.result = result;
 		this.username = username;
 		this.questions = questions;

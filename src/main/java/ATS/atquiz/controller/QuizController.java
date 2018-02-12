@@ -29,6 +29,11 @@ public class QuizController {
 		return quizService.findByUsername(username);
 	}
 	
+	@RequestMapping(value = "/generated", method = RequestMethod.GET)
+	public QuizDto generatedQuiz() {
+		return quizService.generatedQuiz("java",1);
+	}	
+	
 	@RequestMapping(value = "/candidate", method = RequestMethod.POST)
 	public QuizDto create(@RequestBody QuizDto q) {
 		return quizService.create(q);
