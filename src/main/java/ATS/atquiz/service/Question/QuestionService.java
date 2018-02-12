@@ -5,6 +5,8 @@ import java.util.List;
 import ATS.atquiz.dto.AnswerDto;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.model.Question;
+import Exception.InvalidDataException;
+import Exception.NotFoundException;
 
 
 public interface QuestionService {
@@ -20,8 +22,9 @@ public interface QuestionService {
 	 * @param page
 	 * @param size
 	 * @return
+	 * @throws NotFoundException 
 	 */
-	public List<QuestionDto> findAll(Integer page, Integer size);
+	public List<QuestionDto> findAll(Integer page, Integer size) throws NotFoundException;
 	
 	public List<QuestionDto> findByTagAndLevel(String tag, Integer level);
 	
@@ -31,15 +34,16 @@ public interface QuestionService {
 	 * @param idQuestion
 	 * @return
 	 */
-	public QuestionDto findById(String idQuestion)throws Exception;
+	public QuestionDto findById(String idQuestion)throws NotFoundException;
 	
 	/**
 	 * Crea una Questiona
 	 * 
 	 * @param c
 	 * @return
+	 * @throws InvalidDataException 
 	 */
-	public QuestionDto create(QuestionDto a);
+	public QuestionDto create(QuestionDto a) throws InvalidDataException;
 	
 	/**
 	 * Modifica una Questiona

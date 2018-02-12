@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import ATS.atquiz.dao.QuizDao;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.dto.QuizDto;
-import ATS.atquiz.model.Question;
 import ATS.atquiz.model.Quiz;
 import ATS.atquiz.model.User;
 import ATS.atquiz.service.Question.QuestionService;

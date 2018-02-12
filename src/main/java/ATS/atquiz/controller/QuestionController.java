@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ATS.atquiz.dto.AnswerDto;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.service.Question.QuestionService;
+import Exception.InvalidDataException;
+import Exception.NotFoundException;
 
 
 @RestController
@@ -23,7 +25,8 @@ public class QuestionController {
 private QuestionService questionService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<QuestionDto> findAll(@RequestParam(required=false, defaultValue="0") Integer page, @RequestParam(required=false, defaultValue="5") Integer size){
+	public List<QuestionDto> findAll(@RequestParam(required=false, defaultValue="0") Integer page,
+			@RequestParam(required=false, defaultValue="5") Integer size) throws NotFoundException{
 		return questionService.findAll(page,size);		
 	}
 	
@@ -38,7 +41,7 @@ private QuestionService questionService;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public QuestionDto create(@RequestBody QuestionDto questionDto) {
+	public QuestionDto create(@RequestBody QuestionDto questionDto) throws InvalidDataException {
 		return questionService.create(questionDto);
 	}
 	

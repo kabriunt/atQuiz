@@ -1,5 +1,6 @@
 package ATS.atquiz.service.Question;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -12,7 +13,10 @@ import org.springframework.stereotype.Service;
 import ATS.atquiz.dao.QuestionDao;
 import ATS.atquiz.dto.AnswerDto;
 import ATS.atquiz.dto.QuestionDto;
+import ATS.atquiz.dto.UserDto;
 import ATS.atquiz.model.Question;
+import Exception.InvalidDataException;
+import Exception.NotFoundException;
 
 @Service
 public class QuestionServiceImpl implements QuestionService{
@@ -35,21 +39,33 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 	
 	@Override
-	public List<QuestionDto> findAll(Integer page, Integer size){
-		List<Question> questions = questionDao.findAll(new PageRequest(page, size)).getContent();
-		return questions.stream().map(u->map(u)).collect(Collectors.toList());
+	public List<QuestionDto> findAll(Integer page, Integer size) throws NotFoundException{
+		Iterable<Question> questions = questionDao.findAll(new PageRequest(page, size));
+		if(questions!=null) {
+			final List<QuestionDto> questionDtos = new ArrayList<>();
+			questions.forEach(x->questionDtos.add(map(x)));
+			return questionDtos;
+		}
+		throw new NotFoundException();
 	}
 	
 	@Override
-	public QuestionDto findById(String idQuestion)throws Exception{
+	public QuestionDto findById(String idQuestion)throws NotFoundException{
 		Question question = questionDao.findOne(idQuestion);
-		return map(Optional.ofNullable(question).orElseThrow(Exception::new));
+		return map(Optional.ofNullable(question).orElseThrow(NotFoundException::new));
+	}
+	
+	private boolean validate(QuestionDto a) {
+		return (a.getId() != null && a.getLevel() != null && a.getTag() != null);
 	}
 	
 	@Override
-	public QuestionDto create(QuestionDto a) {
-		final Question question = questionDao.save(map(a));
-		return map(question);
+	public QuestionDto create(QuestionDto a) throws InvalidDataException {
+		if(validate(a)) {
+			final Question question = questionDao.save(map(a));
+			return map(question);
+		}
+		throw new InvalidDataException("Error, faltan datos");
 	}
 	
 	@Override
