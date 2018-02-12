@@ -13,15 +13,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import ATS.atquiz.dao.QuizDao;
 import ATS.atquiz.dto.AnswerDto;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.dto.QuizDto;
-import ATS.atquiz.model.Question;
 import ATS.atquiz.model.Quiz;
 import ATS.atquiz.model.User;
 import ATS.atquiz.service.Question.QuestionService;
