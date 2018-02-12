@@ -1,5 +1,6 @@
 package ATS.atquiz.service.Quiz;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +15,8 @@ import ATS.atquiz.dto.QuizDto;
 import ATS.atquiz.model.Quiz;
 import ATS.atquiz.model.User;
 import ATS.atquiz.service.Question.QuestionService;
+import Exception.InvalidDataException;
+import Exception.NotFoundException;
 
 @Service
 public class QuizServiceImpl implements QuizService{
@@ -28,21 +31,38 @@ public class QuizServiceImpl implements QuizService{
 	private DozerBeanMapper mapper;
 	
 	@Override
-	public List<QuizDto> findAll() {
-		List<Quiz> quizs = quizDao.findAll();
-		return quizs.stream().map(u->map(u)).collect(Collectors.toList());
+	public List<QuizDto> findAll() throws NotFoundException {
+		Iterable<Quiz> quizs = quizDao.findAll();
+		if(quizs!=null) {
+			final List<QuizDto> quizDtos = new ArrayList<>();
+			quizs.forEach(x->quizDtos.add(map(x)));
+			return quizDtos;
+		}
+		throw new NotFoundException();
 	}
 
 	@Override
-	public List<QuizDto> findByUsername(String username) {
+	public List<QuizDto> findByUsername(String username) throws NotFoundException {
 		List<Quiz> quizs = quizDao.findByUsername(username);
-		return quizs.stream().map(u->map(u)).collect(Collectors.toList());
+		if(quizs!=null) {
+			final List<QuizDto> quizDtos = new ArrayList<>();
+			quizs.forEach(x->quizDtos.add(map(x)));
+			return quizDtos;
+		}
+		throw new NotFoundException();
 	}
 
+	private boolean validate(QuizDto quizDto) {
+		return (quizDto.getId() != null && quizDto.getDateIni() != null && quizDto.getDateEnd() != null);
+	}
+	
 	@Override
-	public QuizDto create(QuizDto q) {
-		final Quiz quiz = quizDao.save(map(q));
-		return map(quiz);
+	public QuizDto create(QuizDto q) throws InvalidDataException {
+		if(validate(q)) {
+			final Quiz quiz = quizDao.save(map(q));
+			return map(quiz);
+		}
+		throw new InvalidDataException("Error, faltan datos");
 	}
 	
 	@Override

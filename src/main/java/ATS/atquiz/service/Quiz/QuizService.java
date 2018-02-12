@@ -4,14 +4,16 @@ import java.util.List;
 
 import ATS.atquiz.dto.QuizDto;
 import ATS.atquiz.model.Quiz;
+import Exception.InvalidDataException;
+import Exception.NotFoundException;
 
 public interface QuizService {
 
-	public List<QuizDto> findAll();
+	public List<QuizDto> findAll() throws NotFoundException;
 	
-	public List<QuizDto> findByUsername(String username);
+	public List<QuizDto> findByUsername(String username) throws NotFoundException;
 	
-	public QuizDto create(QuizDto q);
+	public QuizDto create(QuizDto q) throws InvalidDataException;
 	
 	public Quiz map(QuizDto dto);
 	

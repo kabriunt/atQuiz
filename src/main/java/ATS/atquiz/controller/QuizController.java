@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ATS.atquiz.dto.QuizDto;
 import ATS.atquiz.service.Quiz.QuizService;
+import Exception.InvalidDataException;
+import Exception.NotFoundException;
 
 @RestController
 @RequestMapping(value="/api/quiz")
@@ -20,12 +22,12 @@ public class QuizController {
 	private QuizService quizService;
 	
 	@RequestMapping(value = "/admin",method = RequestMethod.GET)
-	public List<QuizDto> findAll(){
+	public List<QuizDto> findAll() throws NotFoundException{
 		return quizService.findAll();
 	}
 	
 	@RequestMapping(value = "/admin/{username}", method = RequestMethod.GET)
-	public List<QuizDto> findByUsername(@PathVariable String username){
+	public List<QuizDto> findByUsername(@PathVariable String username) throws NotFoundException{
 		return quizService.findByUsername(username);
 	}
 	
@@ -35,7 +37,7 @@ public class QuizController {
 	}	
 	
 	@RequestMapping(value = "/candidate", method = RequestMethod.POST)
-	public QuizDto create(@RequestBody QuizDto q) {
+	public QuizDto create(@RequestBody QuizDto q) throws InvalidDataException {
 		return quizService.create(q);
 	}	
 	
