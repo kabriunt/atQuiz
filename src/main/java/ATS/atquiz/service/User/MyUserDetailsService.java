@@ -1,5 +1,6 @@
 package ATS.atquiz.service.User;
 
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -7,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.mongodb.MongoClient;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
@@ -18,13 +20,19 @@ public class MyUserDetailsService implements UserDetailsService {
  
 	@Autowired
     private MongoClient mongoClient;
- 
+	
+	private MongoCollection<org.bson.Document> collection;
+	
+	private MongoDatabase database;
+	
+	private FindIterable<Document> d;
+	
     @Override
     public UserDetails loadUserByUsername(String username) {
-    	MongoDatabase database = mongoClient.getDatabase("quizdb");
-        MongoCollection<org.bson.Document> collection = database.getCollection("user");
- 
-        org.bson.Document document = collection.find(Filters.eq("username",username)).first();
+    	database = mongoClient.getDatabase("quizdb");
+        collection = database.getCollection("user");
+        d = collection.find(Filters.eq("username",username));
+        org.bson.Document document = d.first();
  
         if(document!=null) {
         	String dId = document.getString("id");
