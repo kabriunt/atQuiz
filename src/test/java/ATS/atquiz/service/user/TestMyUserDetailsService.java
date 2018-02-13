@@ -1,10 +1,6 @@
 package ATS.atquiz.service.user;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.bson.Document;
-import org.bson.conversions.Bson;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
