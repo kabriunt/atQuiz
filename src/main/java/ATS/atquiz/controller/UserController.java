@@ -20,7 +20,7 @@ import Exception.NotFoundException;
 public class UserController {
 	
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<UserDto> getAll() throws NotFoundException{
