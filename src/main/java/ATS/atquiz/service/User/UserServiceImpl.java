@@ -17,7 +17,7 @@ import Exception.NotFoundException;
 public class UserServiceImpl implements UserService{
 	
 	@Autowired
-	UserDao userDao;
+	private UserDao userDao;
 	
 	@Autowired
 	private DozerBeanMapper mapper;
