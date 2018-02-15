@@ -39,9 +39,13 @@ function getUser(){
 		type: "GET",
 		url: "http://localhost:8081/api/user/admin/"+id,
 		success: function(data){
-			var html ='<ul class="list-group"><li class="list-group-item">'+data.id+'</li><li class="list-group-item">'+data.username
-			+'</li><li class="list-group-item">'+data.password+'</li></ul>';
-			$("#user").html(html); 
+			if(id!=""){
+				var html ='<ul class="list-group"><li class="list-group-item">'+data.id+'</li><li class="list-group-item">'+data.username
+				+'</li><li class="list-group-item">'+data.password+'</li></ul>';
+				$("#user").html(html); 
+			}
+			else
+				var html = "";
 		},
 		error:function(res){
 			alert("ERROR "+ res.statusText);
