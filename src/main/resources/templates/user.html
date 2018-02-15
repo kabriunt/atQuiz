@@ -5,15 +5,23 @@
 		<meta name='description' content='Sitio Web Cliente'/>
 		<meta name='viewport' content='width=device-width, initial-scale=1'/>
 		<title>Cliente</title>
-		<script type="text/javascript" src="/resources/jquery-2.1.4.js"></script>
-		<script type="text/javascript" src="/resources/wsinvocationREST.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script type="text/javascript" th:src="@{/js/jquery-2.1.4.js}"></script>
+		<script type="text/javascript" th:src="@{/js/wsinvocationREST.js}"></script>
 	</head>
-	<body bgcolor="green">
+	<body>
 		<section>
-			<div>						
+			<div >			
 				<h4>Pulse el botón para obtener una lista con todos los usuarios registrados</h4>
-				<pre><p id='contenido'></p></pre>	
-				<button onClick='getAll()'>Obtener todos los usuarios</button>			
+				<div id="userTable" style="display: none"><pre><p id='content'></p></pre></div>
+				<button onClick='getAll();hide();' class="btn btn-primary">Usuarios</button>			
+			</div><br/><br/>
+			<div>				
+				<h4>Introduzca el Id y pulse el botón para obtener los datos del estudiante deseado</h4>
+				<pre><p id='user'></p></pre>				
+				Id: <input type='text' id='id'/><br/>
+				<button onClick='getUser()' class="btn btn-primary">Usuario</button>
 			</div><br/><br/>
 		</section>
 	</body>

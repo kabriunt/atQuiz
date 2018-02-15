@@ -18,16 +18,15 @@ public class WebController {
         public String home(){
             return "home";
         }
-  
-    @RequestMapping(value="/admin/details")
-    public String admin(Model modelo) throws NotFoundException{
-    	modelo.addAttribute("users", userService.findAll());
-        return "admin";
-    }
     
     @RequestMapping(value="/admin")
     public String admin(){
         return "admin";
+    }
+    
+    @RequestMapping(value="/user")
+    public String user(){
+        return "user";
     }
     
     @RequestMapping(value={"/candidate"})

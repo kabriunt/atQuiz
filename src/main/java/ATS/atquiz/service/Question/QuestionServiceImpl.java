@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import ATS.atquiz.dao.QuestionDao;
 import ATS.atquiz.dto.AnswerDto;
 import ATS.atquiz.dto.QuestionDto;
-import ATS.atquiz.dto.UserDto;
 import ATS.atquiz.model.Question;
 import Exception.InvalidDataException;
 import Exception.NotFoundException;
