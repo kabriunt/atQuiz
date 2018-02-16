@@ -23,6 +23,26 @@
 				Id: <input type='text' id='id'/><br/>
 				<button onClick='getUser()' class="btn btn-primary">Usuario</button>
 			</div><br/><br/>
+			<div class="form-group">
+				<h4>Dar de alta usuario</h4>
+				<pre><p id='content2'></p></pre>
+				Username: <input type='text' id='username'/><br/>
+				Password: <input type='text' id='password'/><br/>
+				Rol: 
+				<select id='role' class="selectpicker">
+				  <option value="ROLE_CANDIDATE">Candidato</option>
+				  <option value="ROLE_ADMIN">Administrador</option>
+				</select><br/>
+				Nombre: <input type='text' id='name'/><br/>
+				Apellidos: <input type='text' id='surname'/><br/>
+				Email: <input type='text' id='email'/><br/>
+				DNI: <input type='text' id='dni'/><br/>
+				Cuenta no expirada: <input type='checkbox' id="nonExpiredAccount"/><br/>
+				Cuenta no bloqueada: <input type='checkbox' id="nonLocked"/><br/>
+				Credenciales no expirados: <input type='checkbox' id="nonExpiredCredentials" /><br/>
+				Cuenta activada: <input type='checkbox' id="enabled" /><br/>
+				<button onClick='newUser()' class="btn btn-primary">Registrar Usuario</button>	
+			</div>
 		</section>
 	</body>
 </html>

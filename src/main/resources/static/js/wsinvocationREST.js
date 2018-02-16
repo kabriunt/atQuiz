@@ -59,3 +59,35 @@ function hide() {
         x.style.display = "none";
     }
 }
+
+function newUser(){
+	//Nos traemos los datos del formulario
+	var username = $("#username").val();
+	var password = $("#password").val();
+	var role = $("#role").val();	
+	var name = $("#name").val();
+	var surname = $("#surname").val();
+    var email = $("#email").val();	
+	var dni = $("#dni").val();
+	var nonExpiredAccount = $("#nonExpiredAccount").is(":checked");
+	var nonLocked = $("#nonLocked").is(":checked");
+	var nonExpiredCredentials = $("#nonExpiredCredentials").is(":checked");
+	var enabled = $("#enabled").is(":checked");
+	$.ajax( {
+		type:"POST",
+		url:"http://localhost:8081/api/user/admin",
+		contentType:"application/json",
+		dataType:"text",
+		//creamos el json que recibe el servicio web
+		data:JSON.stringify( {"username": username,"password": password,
+			"role": role,"name":name, "surname": surname,
+			"email": email,"dni": dni, "nonExpiredAccount":nonExpiredAccount,
+	      "nonLocked": nonLocked, "nonExpiredCredentials": nonExpiredCredentials, "enabled": enabled}),
+	    success:function(data){
+	    	var html="Usuario registrado con éxito";
+	    	$('#content2').html(html);
+	    },
+	    error:function(res){
+	    	alert("ERROR "+ res.statusText); }
+	});
+}

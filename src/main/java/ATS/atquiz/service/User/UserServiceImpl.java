@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	private boolean validate(UserDto userDto) {
-		return (userDto.getId()!=null && userDto.getUsername() != null && userDto.getPassword() != null && userDto.getDNI() != null &&
+		return (userDto.getUsername() != null && userDto.getPassword() != null && userDto.getDNI() != null &&
 				userDto.getName() != null && userDto.getEmail() != null);
 	}
 	@Override
