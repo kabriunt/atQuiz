@@ -51,12 +51,51 @@ function getUser(){
 	}
 }
 
-function hide() {
+function hideUsers() {
     var x = document.getElementById("userTable");
+	var y = document.getElementById("hiddableUsers");
     if (x.style.display === "none") {
+		y.firstChild.data="-";
         x.style.display = "block";
     } else {
         x.style.display = "none";
+		y.firstChild.data="+";
+    }
+}
+
+function hideUser() {
+    var x = document.getElementById("userGet");
+	var y = document.getElementById("hiddableUser");
+    if (x.style.display === "none") {
+		y.firstChild.data="-";
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+		y.firstChild.data="+";
+    }
+}
+
+function hidePost() {
+    var x = document.getElementById("userPost");
+	var y = document.getElementById("hiddablePost");
+    if (x.style.display === "none") {
+		y.firstChild.data="-";
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+		y.firstChild.data="+";
+    }
+}
+
+function hideDelete() {
+    var x = document.getElementById("userDelete");
+	var y = document.getElementById("hiddableDelete");
+    if (x.style.display === "none") {
+		y.firstChild.data="-";
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+		y.firstChild.data="+";
     }
 }
 
@@ -91,3 +130,20 @@ function newUser(){
 	    	alert("ERROR "+ res.statusText); }
 	});
 }
+
+function deleteUser(){
+	var id = $('#idDelete').val();
+	id = id.replace(/\s+/g, '');
+	$.ajax({
+		type:"DELETE",
+		url:"http://localhost:8081/api/user/admin/"+id,
+		contentType:"text",
+		success:function(data){
+			var html = "Se ha borrado el usuario";
+			$('#content3').html(html);
+		},
+		error:function(res){
+		alert("Error "+res.statusText);}
+	});
+}
+

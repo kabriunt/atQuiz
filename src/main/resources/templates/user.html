@@ -15,70 +15,81 @@
 		<div class="container">
 				<div class="row">
 					<div class="container" id="formContainer">
-						<div >			
-							<h4>Pulse el botón para obtener una lista con todos los usuarios registrados</h4>
-							<div id="userTable" style="display: none"><pre><p id='content'></p></pre></div>
-							<button onClick='getAll();hide();' class="btn btn-primary">Usuarios</button>			
+						<div class="row">
+							<h4>Obtener todos los usuarios <button onClick='hideUsers()' class="btn btn-primary" id='hiddableUsers'>+</button></h4>
+						</div>
+						<div id="userTable" style="display: none">			
+							<div ><pre><p id='content'></p></pre></div>
+							<button onClick='getAll()' class="btn btn-primary">Obetener</button>			
 						</div><br/><br/>
-						<div>				
-							<h4>Introduzca el Id y pulse el botón para obtener los datos del estudiante deseado</h4>
+						<h4>Buscar usuario<button onClick='hideUser()' class="btn btn-primary" id='hiddableUser'>+</button></h4>
+						<div id="userGet" style="display: none">				
 							<pre><p id='user'></p></pre>				
 							<label for="id">Id</label><br/>
 							<input type='text' id='id'/><br/>
-							<button onClick='getUser()' class="btn btn-primary">Usuario</button>
+							<button onClick='getUser()' class="btn btn-primary">Buscar</button>
 						</div><br/><br/>
-						<form class="form-group">
-							<h4>Dar de alta usuario</h4>
-							<pre><p id='content2'></p></pre>
-							<div class="form-group">
-								<label for="username">Usuario</label><br/>
-								<input type='text' id='username'/><br/>
-							</div>
-							<div class="form-group">
-								<label for="password">Contraseña</label><br/>
-								<input type='password' id='password'/><br/>
-							</div>
-							<div class="form-group">
-								<label for="role">Rol</label> <br/>
-								<select id='role' class="selectpicker">
-								  <option value="ROLE_CANDIDATE">Candidato</option>
-								  <option value="ROLE_ADMIN">Administrador</option>
-								</select><br/>
-							</div>
-							<div class="form-group">
-								<label for="name">Nombre</label><br/>
-								<input type='text' id='name'/><br/>
-							</div>
-							<div class="form-group">
-								<label for="surname">Apellidos</label><br/>
-								<input type='text' id='surname'/><br/>
-							</div>
-							<div class="form-group">
-								<label for="email">Email</label><br/>
-								<input type='text' id='email'/><br/>
-							</div>
-							<div class="form-group">
-								<label for="dni">DNI</label><br/>
-								<input type='text' id='dni'/><br/>
-							</div>
-							<div class="form-group">
-								<label for="nonExpiredAccount">Cuenta no expirada</label><br/>
-								<input type='checkbox' id="nonExpiredAccount"/><br/>
-							</div>
-							<div class="form-group">
-								<label for="nonLocked">Cuenta no bloqueada</label><br/>
-								<input type='checkbox' id="nonLocked"/><br/>
-							</div>
-							<div class="form-group">
-								<label for="nonExpiredCredentials">Credenciales no expirados</label><br/>
-								<input type='checkbox' id="nonExpiredCredentials" /><br/>
-							</div>
-							<div class="form-group">
-								<label for="enabled">Activada</label><br/>
-								<input type='checkbox' id="enabled" /><br/>
-							</div>
-							<button onClick='newUser()' class="btn btn-primary">Registrar Usuario</button>	
-						</form>
+						<h4>Registrar usuario<button onClick='hidePost()' class="btn btn-primary" id='hiddablePost'>+</button></h4>
+						<div id="userPost" style="display: none">	
+							<form class="form-group">
+								<pre><p id='content2'></p></pre>
+								<div class="form-group">
+									<label for="username">Usuario</label><br/>
+									<input type='text' id='username'/><br/>
+								</div>
+								<div class="form-group">
+									<label for="password">Contraseña</label><br/>
+									<input type='password' id='password'/><br/>
+								</div>
+								<div class="form-group">
+									<label for="role">Rol</label> <br/>
+									<select id='role' class="selectpicker">
+									  <option value="ROLE_CANDIDATE">Candidato</option>
+									  <option value="ROLE_ADMIN">Administrador</option>
+									</select><br/>
+								</div>
+								<div class="form-group">
+									<label for="name">Nombre</label><br/>
+									<input type='text' id='name'/><br/>
+								</div>
+								<div class="form-group">
+									<label for="surname">Apellidos</label><br/>
+									<input type='text' id='surname'/><br/>
+								</div>
+								<div class="form-group">
+									<label for="email">Email</label><br/>
+									<input type='text' id='email'/><br/>
+								</div>
+								<div class="form-group">
+									<label for="dni">DNI</label><br/>
+									<input type='text' id='dni'/><br/>
+								</div>
+								<div class="form-group">
+									<label for="nonExpiredAccount">Cuenta no expirada</label><br/>
+									<input type='checkbox' id="nonExpiredAccount"/><br/>
+								</div>
+								<div class="form-group">
+									<label for="nonLocked">Cuenta no bloqueada</label><br/>
+									<input type='checkbox' id="nonLocked"/><br/>
+								</div>
+								<div class="form-group">
+									<label for="nonExpiredCredentials">Credenciales no expirados</label><br/>
+									<input type='checkbox' id="nonExpiredCredentials" /><br/>
+								</div>
+								<div class="form-group">
+									<label for="enabled">Activada</label><br/>
+									<input type='checkbox' id="enabled" /><br/>
+								</div>
+								<button onClick='newUser()' class="btn btn-primary">Registrar Usuario</button>	
+							</form>
+						</div>
+						<h4>Borrar usuario<button onClick='hideDelete()' class="btn btn-primary" id='hiddableDelete'>+</button></h4>
+						<div id="userDelete" style="display: none">				
+							<pre><p id='content3'></p></pre>				
+							<label for="idDelete">Id</label><br/>
+							<input type='text' id='idDelete'/><br/>
+							<button onClick='deleteUser()' class="btn btn-primary">Borrar</button>
+						</div><br/>
 					</div>
 				</div>
 			</div>

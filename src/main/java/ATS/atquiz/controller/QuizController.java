@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ATS.atquiz.dto.QuizDto;
@@ -32,8 +33,8 @@ public class QuizController {
 	}
 	
 	@RequestMapping(value = "/generated", method = RequestMethod.GET)
-	public QuizDto generatedQuiz() {
-		return quizService.generatedQuiz("java",1);
+	public QuizDto generatedQuiz(@RequestParam String tag, @RequestParam Integer lvl) {
+		return quizService.generatedQuiz(tag,lvl);
 	}	
 	
 	@RequestMapping(value = "/candidate", method = RequestMethod.POST)
