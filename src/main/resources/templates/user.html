@@ -19,7 +19,7 @@
 							<h4>Obtener todos los usuarios <button onClick='hideUsers()' class="btn btn-primary" id='hiddableUsers'>+</button></h4>
 						</div>
 						<div id="userTable" style="display: none">			
-							<div ><pre><p id='content'></p></pre></div>
+							<div ><pre><p id='users'></p></pre></div>
 							<button onClick='getAll()' class="btn btn-primary">Obetener</button>			
 						</div><br/><br/>
 						<h4>Buscar usuario<button onClick='hideUser()' class="btn btn-primary" id='hiddableUser'>+</button></h4>
@@ -34,7 +34,7 @@
 						<h4>Registrar usuario<button onClick='hidePost()' class="btn btn-primary" id='hiddablePost'>+</button></h4>
 						<div id="userPost" style="display: none">	
 							<form class="form-group">
-								<pre><p id='content2'></p></pre>
+								<pre><p id='responseForCreation'></p></pre>
 								<div class="form-group">
 									<label for="username">Usuario</label><br/>
 									<input type='text' id='username'/><br/>
@@ -88,7 +88,7 @@
 					</div>
 					<h4>Borrar usuario<button onClick='hideDelete()' class="btn btn-primary" id='hiddableDelete'>+</button></h4>
 					<div id="userDelete" style="display: none">				
-						<pre><p id='content3'></p></pre>				
+						<pre><p id='responseForDelete'></p></pre>				
 						<label for="idDelete">Id</label><br/>
 						<input type='text' id='idDelete'/><br/>
 						<button onClick='deleteUser()' class="btn btn-primary">Borrar</button>
