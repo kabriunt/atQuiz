@@ -96,13 +96,13 @@ public class QuizServiceImpl implements QuizService{
 	}
 
 	@Override
-	public Quiz map(QuizDto dto) {
-		return mapper.map(dto, Quiz.class);
+	public Quiz map(QuizDto quizDto) {
+		return mapper.map(quizDto, Quiz.class);
 	}
 
 	@Override
-	public QuizDto map(Quiz q) {
-		return mapper.map(q, QuizDto.class);
+	public QuizDto map(Quiz quiz) {
+		return mapper.map(quiz, QuizDto.class);
 	}
 
 }
