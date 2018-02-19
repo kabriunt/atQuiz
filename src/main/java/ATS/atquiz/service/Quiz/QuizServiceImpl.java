@@ -16,6 +16,7 @@ import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.dto.QuizDto;
 import ATS.atquiz.dto.UserDto;
 import ATS.atquiz.model.Quiz;
+import ATS.atquiz.model.User;
 import ATS.atquiz.service.Question.QuestionService;
 import ATS.atquiz.service.User.UserService;
 import Exception.InvalidDataException;
@@ -63,26 +64,35 @@ public class QuizServiceImpl implements QuizService{
 	}
 	
 	@Override
-	public QuizDto create(QuizDto q) throws InvalidDataException {
-		if(validate(q)) {
-			final Quiz quiz = quizDao.save(map(q));
+	public QuizDto create(QuizDto quizDto) throws InvalidDataException {
+		if(validate(quizDto)) {
+			final Quiz quiz = quizDao.save(map(quizDto));
 			return map(quiz);
 		}
 		throw new InvalidDataException("Error, faltan datos");
 	}
 	
-	@Override
-	public QuizDto generateQuiz(String tag, Integer level, Integer nQuestions) throws NotFoundException {
+	private List<QuestionDto> generateQuestions(String tag, Integer level, Integer nQuestions){
 		List<QuestionDto> questions = questionService.findByTagAndLevel(tag, level);
 		Collections.shuffle(questions);
 		nQuestions=(nQuestions >= questions.size())?questions.size():nQuestions;
 		if(nQuestions>=questions.size())
 			nQuestions = questions.size();
 		questions = questions.subList(0, nQuestions);
+		return questions;
+	}
+	
+	private User getCurrentUser() throws NotFoundException {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		UserDto user = userService.findByUsername(authentication.getName());
-		final QuizDto quizDto = new QuizDto(null, new Date(), new Date(),0.0, userService.map(user),questions);
-		return quizDto;
+		UserDto userDto = userService.findByUsername(authentication.getName());
+		return userService.map(userDto);
+	}
+	
+	@Override
+	public QuizDto generateQuiz(String tag, Integer level, Integer nQuestions) throws NotFoundException {	
+		final List<QuestionDto> questions = generateQuestions(tag,level,nQuestions);
+		final User user = getCurrentUser();
+		return new QuizDto(null, new Date(), new Date(),0.0, user, questions);
 	}
 
 	@Override
