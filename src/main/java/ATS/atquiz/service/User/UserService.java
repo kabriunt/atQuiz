@@ -17,9 +17,13 @@ public interface UserService {
 	
 	UserDto findById(String oId) throws NotFoundException;
 	
+	UserDto findByUsername(String username) throws NotFoundException;
+	
 	UserDto create(UserDto userDto) throws InvalidDataException;
 	
 	void update(UserDto userDto);
 	
 	void delete(String oId);
+
+	
 }

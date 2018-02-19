@@ -50,6 +50,14 @@ public class UserServiceImpl implements UserService{
 			return map(user);
 		throw new NotFoundException();
 	}
+	
+	@Override
+	public UserDto findByUsername(String username) throws NotFoundException{
+		final User user = userDao.findByUsername(username);
+		if(user != null)
+			return map(user);
+		throw new NotFoundException();
+	}
 
 	private boolean validate(UserDto userDto) {
 		return (userDto.getUsername() != null && userDto.getPassword() != null && userDto.getDNI() != null &&

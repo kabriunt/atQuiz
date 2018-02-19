@@ -32,9 +32,10 @@ public class QuizController {
 		return quizService.findByUsername(username);
 	}
 	
-	@RequestMapping(value = "/generated", method = RequestMethod.GET)
-	public QuizDto generatedQuiz(@RequestParam String tag, @RequestParam Integer lvl) {
-		return quizService.generatedQuiz(tag,lvl);
+	@RequestMapping(value = "/generate", method = RequestMethod.GET)
+	public QuizDto generateQuiz(@RequestParam String tag, @RequestParam Integer lvl,
+			@RequestParam(defaultValue = "20") Integer nQuestions) throws NotFoundException {
+		return quizService.generateQuiz(tag,lvl, nQuestions);
 	}	
 	
 	@RequestMapping(value = "/candidate", method = RequestMethod.POST)

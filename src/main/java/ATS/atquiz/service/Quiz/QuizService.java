@@ -19,5 +19,5 @@ public interface QuizService {
 	
 	public QuizDto map(Quiz q);
 
-	public QuizDto generatedQuiz(String tag, Integer level);
+	public QuizDto generateQuiz(String tag, Integer level, Integer nQuestions) throws NotFoundException;
 }

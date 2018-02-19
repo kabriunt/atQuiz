@@ -27,18 +27,18 @@ public class QuizDto implements Serializable{
 	
 	Double result;
 	
-	private User username;
+	private User user;
 	
 	private List<QuestionDto> questions;
 	
 	public QuizDto() {}
 	
-	public QuizDto(String Id, Date dateIni, Date dateEnd, Double result, User username, List<QuestionDto> questions) {
+	public QuizDto(String Id, Date dateIni, Date dateEnd, Double result, User user, List<QuestionDto> questions) {
 		this.Id = Id;
 		this.dateIni = dateIni;
 		this.dateEnd = dateEnd;
 		this.result = result;
-		this.username = username;
+		this.user = user;
 		this.questions = questions;
 	}
 	

@@ -70,7 +70,7 @@ public class TestQuizService {
 		quizDto.setId(id);
 		quizDto.setDateIni(d);
 		quizDto.setDateEnd(d);
-		quizDto.setUsername(user);
+		quizDto.setUser(user);
 		quizDto.setQuestions(questionDtos);
 		quizDtos.add(quizDto);		
 	}
@@ -130,7 +130,7 @@ public class TestQuizService {
 		Assert.assertEquals(quizDto.getId(), res.getId());
 		Assert.assertEquals(quizDto.getDateIni(), res.getDateIni());
 		Assert.assertEquals(quizDto.getDateEnd(), res.getDateEnd());
-		Assert.assertEquals(quizDto.getUsername(), res.getUsername());
+		Assert.assertEquals(quizDto.getUser(), res.getUser());
 	}	
 	
 	@Test(expected = InvalidDataException.class)
@@ -139,8 +139,8 @@ public class TestQuizService {
 	}
 	
 	@Test
-	public void generateQuizTest() {
-		QuizDto res = quizService.generatedQuiz(tag, level);
+	public void generateQuizTest() throws NotFoundException {
+		QuizDto res = quizService.generateQuiz(tag, level,10);
 		Assert.assertEquals("1", res.getId());
 		Assert.assertEquals(new Date(), res.getDateIni());
 		Assert.assertEquals(new Date(), res.getDateEnd());

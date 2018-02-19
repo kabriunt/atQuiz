@@ -1,19 +1,25 @@
 package ATS.atquiz.service.Quiz;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import ATS.atquiz.dao.QuizDao;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.dto.QuizDto;
+import ATS.atquiz.dto.UserDto;
 import ATS.atquiz.model.Quiz;
-import ATS.atquiz.model.User;
 import ATS.atquiz.service.Question.QuestionService;
+import ATS.atquiz.service.User.UserService;
 import Exception.InvalidDataException;
 import Exception.NotFoundException;
 
@@ -25,6 +31,9 @@ public class QuizServiceImpl implements QuizService{
 	
 	@Autowired
 	private QuestionService questionService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@Autowired
 	private DozerBeanMapper mapper;
@@ -52,7 +61,7 @@ public class QuizServiceImpl implements QuizService{
 	}
 
 	private boolean validate(QuizDto quizDto) {
-		return (quizDto.getId() != null && quizDto.getDateIni() != null && quizDto.getDateEnd() != null);
+		return (quizDto.getDateIni() != null && quizDto.getDateEnd() != null);
 	}
 	
 	@Override
@@ -65,9 +74,16 @@ public class QuizServiceImpl implements QuizService{
 	}
 	
 	@Override
-	public QuizDto generatedQuiz(String tag, Integer level) {
-		final List<QuestionDto> questions = questionService.findByTagAndLevel(tag, level);
-		final QuizDto quizDto = new QuizDto("1",new Date(),new Date(),0.0,new User(),questions);
+	public QuizDto generateQuiz(String tag, Integer level, Integer nQuestions) throws NotFoundException {
+		List<QuestionDto> questions = questionService.findByTagAndLevel(tag, level);
+		Collections.shuffle(questions);
+		nQuestions=(nQuestions >= questions.size())?questions.size():nQuestions;
+		if(nQuestions>=questions.size())
+			nQuestions = questions.size();
+		questions = questions.subList(0, nQuestions);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDto user = userService.findByUsername(authentication.getName());
+		final QuizDto quizDto = new QuizDto(null, new Date(), new Date(),0.0, userService.map(user),questions);
 		return quizDto;
 	}
 
