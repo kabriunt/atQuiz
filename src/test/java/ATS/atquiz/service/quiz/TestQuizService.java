@@ -15,7 +15,6 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import ATS.atquiz.dao.QuizDao;
-import ATS.atquiz.dto.AnswerDto;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.dto.QuizDto;
 import ATS.atquiz.model.Quiz;
@@ -43,11 +42,9 @@ public class TestQuizService {
 	private static final QuestionDto questionDto = new QuestionDto();
 	private static final List<QuestionDto> questionDtos = new ArrayList<>();
 	
-	private static final String idq = "ewkle212";
 	private static final String questionAttribute = "¿What?";
 	private static final String tag = "common";
 	private static final Integer level = 0;
-	private static final AnswerDto answer = new AnswerDto("forget about it",true);
 	
 	@InjectMocks 
 	QuizService quizService = new QuizServiceImpl();
