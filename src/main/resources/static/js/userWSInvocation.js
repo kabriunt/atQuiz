@@ -1,6 +1,4 @@
-/**
- * Método que obtiene todos los estudiantes y los muestra
- */
+
 function getAll(){
 	$.ajax({
 		type: "GET",
@@ -79,7 +77,7 @@ function newUser(){
 	    	$('#responseForCreation').html(html);
 	    },
 	    error:function(res){
-	    	alert("ERROR "+ res.statusText); }
+	    	alert("ERROR "+token+" :"+ res.statusText); }
 	});
 }
 
