@@ -8,7 +8,6 @@ import java.util.List;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import ATS.atquiz.dto.QuestionDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,6 +30,6 @@ public class Quiz implements Serializable{
 	
 	private User user;
 	
-	private List<QuestionDto> answers = new ArrayList<>();
+	private List<Question> answers = new ArrayList<>();
 
 }
