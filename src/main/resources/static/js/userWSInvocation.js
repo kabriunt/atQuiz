@@ -42,7 +42,7 @@ function getUser(){
 				+'</li><li class="list-group-item">'+data.password+'</li></ul>';
 				$("#user").html(html); 
 			},
-			error:function(res){
+			error:function(res,data){
 				$("#user").html(res.statusText+": "+res.status);
 			}
 		});

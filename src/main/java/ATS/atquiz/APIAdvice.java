@@ -17,12 +17,12 @@ public class APIAdvice {
 	@ExceptionHandler(NotFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public ErrorDto notFound(NotFoundException e) {
-		return new ErrorDto(404,e.getMessage());
+		return new ErrorDto(404, e.getMessage());
 	}
 	
 	@ExceptionHandler(InvalidDataException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public ErrorDto notFound(InvalidDataException e) {
-		return new ErrorDto(400,e.getMessage());
+	public ErrorDto notInvalidData(InvalidDataException e) {
+		return new ErrorDto(400, e.getMessage());
 	}
 }
