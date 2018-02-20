@@ -106,7 +106,7 @@ function deleteUser(){
 			var html = "Se ha borrado el usuario";
 			$('#responseForDelete').html(html);
 		},
-		error:function(res){
+		error:function(xhr){
 			var jsonResponse = JSON.parse(xhr.responseText);
 			$("#responseForDelete").html(jsonResponse.code+": "+jsonResponse.message);
 		}
