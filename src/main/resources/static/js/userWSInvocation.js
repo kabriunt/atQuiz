@@ -62,6 +62,8 @@ function newUser(){
 	var nonLocked = $("#nonLocked").is(":checked");
 	var nonExpiredCredentials = $("#nonExpiredCredentials").is(":checked");
 	var enabled = $("#enabled").is(":checked");
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
 	$.ajax( {
 		type:"POST",
 		url:"http://localhost:8081/api/user/admin",
@@ -72,6 +74,9 @@ function newUser(){
 			"role": role,"name":name, "surname": surname,
 			"email": email,"dni": dni, "nonExpiredAccount":nonExpiredAccount,
 	      "nonLocked": nonLocked, "nonExpiredCredentials": nonExpiredCredentials, "enabled": enabled}),
+		beforeSend: function( xhr ) {
+			xhr.setRequestHeader(header, token);
+		},
 	    success:function(data){
 	    	var html="Usuario registrado con éxito";
 	    	$('#responseForCreation').html(html);
@@ -83,11 +88,16 @@ function newUser(){
 
 function deleteUser(){
 	var id = $('#idDelete').val();
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
 	id = id.replace(/\s+/g, '');
 	$.ajax({
 		type:"DELETE",
 		url:"http://localhost:8081/api/user/admin/"+id,
 		contentType:"text",
+		beforeSend: function( xhr ) {
+			xhr.setRequestHeader(header, token);
+		},
 		success:function(data){
 			var html = "Se ha borrado el usuario";
 			$('#responseForDelete').html(html);
