@@ -11,7 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import ATS.atquiz.dao.QuestionDao;
-import ATS.atquiz.dto.AnswerDto;
+import ATS.atquiz.dto.Answer;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.model.Question;
 import Exception.InvalidDataException;
@@ -79,14 +79,14 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 	
 	@Override
-	public void addAnswer(String idQuestion, AnswerDto answer) {
+	public void addAnswer(String idQuestion, Answer answer) {
 		final Question q = questionDao.findOne(idQuestion);
 		q.getAnswers().add(answer);
 		questionDao.save(q);
 	}
 	
 	@Override
-	public void updateAnswerList(String idQuestion, List<AnswerDto> answers) {
+	public void updateAnswerList(String idQuestion, List<Answer> answers) {
 		final Question q = questionDao.findOne(idQuestion);
 		q.setAnswers(answers);
 		questionDao.save(q);

@@ -9,7 +9,6 @@ import ATS.atquiz.model.Question;
 
 @Repository
 public interface QuestionDao extends MongoRepository<Question, String>{
-
 	
 	public List<Question> findByTagAndLevel(String tag, Integer level);
 }

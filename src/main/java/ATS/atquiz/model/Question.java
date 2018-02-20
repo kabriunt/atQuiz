@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import ATS.atquiz.dto.AnswerDto;
+import ATS.atquiz.dto.Answer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +18,7 @@ public class Question implements Serializable{
 	
 	private static final long serialVersionUID = -2641110345493075094L;
 
-	private String Id;
+	private String id;
 	
 	private String question;
 	
@@ -26,7 +26,7 @@ public class Question implements Serializable{
 	
 	private Integer level;
 	
-	private List<AnswerDto> answers = new ArrayList<>();
+	private List<Answer> answers = new ArrayList<>();
 	
 	
 

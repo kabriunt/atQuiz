@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ATS.atquiz.dto.AnswerDto;
+import ATS.atquiz.dto.Answer;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.service.Question.QuestionService;
 import Exception.InvalidDataException;
@@ -22,7 +22,7 @@ import Exception.NotFoundException;
 public class QuestionController {
 
 	@Autowired
-private QuestionService questionService;
+	private QuestionService questionService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public List<QuestionDto> findAll(@RequestParam(required=false, defaultValue="0") Integer page,
@@ -56,12 +56,12 @@ private QuestionService questionService;
 	}
 	
 	@RequestMapping(value = "/{id}/newAnswer", method = RequestMethod.POST)
-	public void addAnswer(@PathVariable String id, @RequestBody AnswerDto answerDto) {
+	public void addAnswer(@PathVariable String id, @RequestBody Answer answerDto) {
 		questionService.addAnswer(id, answerDto);
 	}
 	
 	@RequestMapping(value = "/{id}/updateAnswerList", method = RequestMethod.POST)
-	public void updateAnswerList(@PathVariable String id, @RequestBody List<AnswerDto> answerDtos) {
+	public void updateAnswerList(@PathVariable String id, @RequestBody List<Answer> answerDtos) {
 		questionService.updateAnswerList(id, answerDtos);
 	}
 	

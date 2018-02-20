@@ -2,7 +2,7 @@ package ATS.atquiz.service.Question;
 
 import java.util.List;
 
-import ATS.atquiz.dto.AnswerDto;
+import ATS.atquiz.dto.Answer;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.model.Question;
 import Exception.InvalidDataException;
@@ -64,12 +64,12 @@ public interface QuestionService {
 	 * @param idQuestion
 	 * @param answer
 	 */
-	void addAnswer(String idQuestion, AnswerDto answer);
+	void addAnswer(String idQuestion, Answer answer);
 	/**
 	 * Actualiza una lista de preguntas
 	 * @param idQuestion
 	 * @param answers
 	 */
-	void updateAnswerList(String idQuestion, List<AnswerDto> answers);
+	void updateAnswerList(String idQuestion, List<Answer> answers);
 	
 }

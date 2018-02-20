@@ -5,15 +5,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AnswerDto {
+public class Answer {
 	
 	private String answer;
 	
 	private boolean ok;
 	
-	public AnswerDto() {}
+	public Answer() {}
 	
-	public AnswerDto(String answer, boolean ok) {
+	public Answer(String answer, boolean ok) {
 		this.answer = answer;
 		this.ok = ok;
 	}

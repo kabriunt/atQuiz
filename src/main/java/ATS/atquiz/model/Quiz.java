@@ -19,7 +19,7 @@ public class Quiz implements Serializable{
 	
 	private static final long serialVersionUID = 6203808840822554471L;
 	
-	public String Id;
+	public String id;
 	
 	@DateTimeFormat(pattern = "yyyy/MM/dd hh:mm:ss")
 	public Date dateIni;

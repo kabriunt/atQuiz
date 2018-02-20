@@ -17,7 +17,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 
 import ATS.atquiz.dao.QuestionDao;
-import ATS.atquiz.dto.AnswerDto;
+import ATS.atquiz.dto.Answer;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.model.Question;
 import ATS.atquiz.service.Question.QuestionService;
@@ -35,13 +35,13 @@ public class TestQuestionService {
 	private static final QuestionDto questionDto = new QuestionDto();
 	private static final List<QuestionDto> questionDtos = new ArrayList<>();
 	
-	private static final List<AnswerDto> answerDtos = new ArrayList<>();
+	private static final List<Answer> answerDtos = new ArrayList<>();
 	
 	private static final String id = "ewkle212";
 	private static final String questionAttribute = "¿What?";
 	private static final String tag = "common";
 	private static final Integer level = 0;
-	private static final AnswerDto answer = new AnswerDto("forget about it",true);
+	private static final Answer answer = new Answer("forget about it",true);
 	
 	@InjectMocks
 	QuestionService questionService = new QuestionServiceImpl();
@@ -137,7 +137,7 @@ public class TestQuestionService {
 	
 	@Test
 	public void testAddAnswer() {
-		questionService.addAnswer(id, new AnswerDto());
+		questionService.addAnswer(id, new Answer());
 	}
 	
 	@Test

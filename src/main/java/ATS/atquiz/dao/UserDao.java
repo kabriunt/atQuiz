@@ -8,6 +8,7 @@ import ATS.atquiz.model.User;
 
 @Repository
 public interface UserDao extends MongoRepository<User, String> {
+	
 	@Query("{ 'username' : ?0 }")
 	User findByUsername(String username);
 }
