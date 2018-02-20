@@ -26,10 +26,10 @@ public class Quiz implements Serializable{
 	@DateTimeFormat(pattern = "yyyy/MM/dd hh:mm:ss")
 	public Date dateEnd;
 	
-	Double result;
+	Double mark;
 	
 	private User user;
 	
-	private List<Question> answers = new ArrayList<>();
+	private List<Question> questions = new ArrayList<>();
 
 }
