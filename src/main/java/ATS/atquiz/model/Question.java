@@ -28,6 +28,4 @@ public class Question implements Serializable{
 	
 	private List<Answer> answers = new ArrayList<>();
 	
-	
-
 }
