@@ -43,7 +43,7 @@ function getUser(){
 				$("#user").html(html); 
 			},
 			error:function(res){
-				alert("ERROR "+ res.statusText);
+				$("#user").html(res.statusText+": "+res.status);
 			}
 		});
 	}
@@ -82,7 +82,8 @@ function newUser(){
 	    	$('#responseForCreation').html(html);
 	    },
 	    error:function(res){
-	    	alert("ERROR "+token+" :"+ res.statusText); }
+	    	$("#responseForCreation").html(res.statusText+": "+res.status);
+		}
 	});
 }
 
@@ -103,7 +104,8 @@ function deleteUser(){
 			$('#responseForDelete').html(html);
 		},
 		error:function(res){
-		alert("Error "+res.statusText);}
+			$("#responseForDelete").html(res.statusText+": "+res.status);
+		}
 	});
 }
 
