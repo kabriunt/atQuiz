@@ -23,8 +23,9 @@ function getAll(){
 			$("#users").html(html);
 		},		
 		//esto se hará en caso de que el servicio web falle
-		error:function(res){
-			alert("ERROR "+ res.statusText);
+		error:function(xhr){
+			var jsonResponse = JSON.parse(xhr.responseText);
+			$("#users").html(jsonResponse.code+": "+jsonResponse.message);
 		}
 	});
 }
@@ -42,8 +43,9 @@ function getUser(){
 				+'</li><li class="list-group-item">'+data.password+'</li></ul>';
 				$("#user").html(html); 
 			},
-			error:function(res){
-				$("#user").html(res.statusText+": "+res.status);
+			error:function(xhr){
+				var jsonResponse = JSON.parse(xhr.responseText);
+				$("#user").html(jsonResponse.code+": "+jsonResponse.message);
 			}
 		});
 	}
@@ -81,8 +83,9 @@ function newUser(){
 	    	var html="Usuario registrado con éxito";
 	    	$('#responseForCreation').html(html);
 	    },
-	    error:function(res){
-	    	$("#responseForCreation").html(res.statusText+": "+res.status);
+	    error:function(xhr){
+			var jsonResponse = JSON.parse(xhr.responseText);
+			$("#responseForCreation").html(jsonResponse.code+": "+jsonResponse.message);
 		}
 	});
 }
@@ -104,7 +107,8 @@ function deleteUser(){
 			$('#responseForDelete').html(html);
 		},
 		error:function(res){
-			$("#responseForDelete").html(res.statusText+": "+res.status);
+			var jsonResponse = JSON.parse(xhr.responseText);
+			$("#responseForDelete").html(jsonResponse.code+": "+jsonResponse.message);
 		}
 	});
 }
