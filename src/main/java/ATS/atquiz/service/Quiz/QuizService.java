@@ -22,5 +22,5 @@ public interface QuizService {
 
 	public QuizDto generateQuiz(String tag, Integer level, Integer nQuestions) throws NotFoundException;
 
-	List<MarkDto> getMarksByUsername(String username) throws NotFoundException;
+	public List<MarkDto> getMarksByUsername(String username) throws NotFoundException;
 }
