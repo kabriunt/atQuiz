@@ -11,6 +11,6 @@ import ATS.atquiz.model.Quiz;
 @Repository
 public interface QuizDao extends MongoRepository<Quiz, String>{
 
-	@Query("{ 'username' : ?0 }")
+	@Query("{ user.username: ?0}")
 	public List<Quiz> findByUsername(String username);
 }
