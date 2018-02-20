@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import ATS.atquiz.dao.QuizDao;
+import ATS.atquiz.dto.MarkDto;
 import ATS.atquiz.dto.QuestionDto;
 import ATS.atquiz.dto.QuizDto;
 import ATS.atquiz.dto.UserDto;
@@ -93,6 +94,15 @@ public class QuizServiceImpl implements QuizService{
 		final List<QuestionDto> questions = generateQuestions(tag,level,nQuestions);
 		final User user = getCurrentUser();
 		return new QuizDto(null, new Date(), new Date(),0.0, user, questions);
+	}
+	
+	@Override
+	public List<MarkDto> getMarksByUsername(String username) throws NotFoundException{
+		List<MarkDto> marks = quizDao.findMarksByUsername(username);
+		if(marks!=null) {
+			return marks;
+		}
+		throw new NotFoundException();
 	}
 
 	@Override

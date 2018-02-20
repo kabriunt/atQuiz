@@ -2,6 +2,7 @@ package ATS.atquiz.service.Quiz;
 
 import java.util.List;
 
+import ATS.atquiz.dto.MarkDto;
 import ATS.atquiz.dto.QuizDto;
 import ATS.atquiz.model.Quiz;
 import Exception.InvalidDataException;
@@ -20,4 +21,6 @@ public interface QuizService {
 	public QuizDto map(Quiz q);
 
 	public QuizDto generateQuiz(String tag, Integer level, Integer nQuestions) throws NotFoundException;
+
+	List<MarkDto> getMarksByUsername(String username) throws NotFoundException;
 }

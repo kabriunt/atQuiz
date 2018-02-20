@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import ATS.atquiz.dto.MarkDto;
 import ATS.atquiz.dto.QuizDto;
 import ATS.atquiz.service.Quiz.QuizService;
 import Exception.InvalidDataException;
@@ -29,6 +30,11 @@ public class QuizController {
 	@RequestMapping(value = "/admin/quizs", method = RequestMethod.GET)
 	public List<QuizDto> findQuizsByUsername(@RequestParam String username) throws NotFoundException{
 		return quizService.findByUsername(username);
+	}
+	
+	@RequestMapping(value = "/admin/quizs/marks", method = RequestMethod.GET)
+	public List<MarkDto> getMarksByUsername(@RequestParam String username) throws NotFoundException{
+		return quizService.getMarksByUsername(username);
 	}
 	
 	@RequestMapping(value = "/generate", method = RequestMethod.GET)
